@@ -1,5 +1,6 @@
 import Router from "~/router";
 import { Header } from "./components/Header";
+import { RegistrationProvider } from "./contexts/RegistrationsContext";
 
 function App() {
   return (
@@ -7,7 +8,9 @@ function App() {
       <Header>
         <h1>Caju Front Teste</h1>
       </Header>
-      <Router />
+      <RegistrationProvider>
+        <Router />
+      </RegistrationProvider>
     </>
   );
 }
