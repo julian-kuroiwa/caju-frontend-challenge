@@ -11,25 +11,30 @@ const allColumns = [
 type Props = {
   registrations?: any[];
 };
-const Collumns = (props: Props) => {
+const Collumns = ({registrations}: Props) => {
+  const filteredRegistration = (status: string) => {
+    return registrations?.filter((registration) => registration.status === status)
+      .map((registration) => {
+      return (
+        <RegistrationCard
+          data={registration}
+          key={registration.id}
+        />
+      );
+    })
+  }
+
   return (
     <S.Container>
-      {allColumns.map((collum) => {
+      {allColumns.map(({status, title}) => {
         return (
-          <S.Column status={collum.status} key={collum.title}>
+          <S.Column status={status} key={title}>
             <>
-              <S.TitleColumn status={collum.status}>
-                {collum.title}
+              <S.TitleColumn status={status}>
+                {title}
               </S.TitleColumn>
               <S.CollumContent>
-                {props?.registrations?.map((registration) => {
-                  return (
-                    <RegistrationCard
-                      data={registration}
-                      key={registration.id}
-                    />
-                  );
-                })}
+                {filteredRegistration(status)}
               </S.CollumContent>
             </>
           </S.Column>
