@@ -1,6 +1,8 @@
 
 import * as S from "./styles";
 import RegistrationCard from "../RegistrationCard";
+import { useCallback } from "react";
+import { Registration } from "~/contexts/RegistrationsContext";
 
 const allColumns = [
   { status: 'REVIEW', title: "Pronto para revisar" },
@@ -9,20 +11,20 @@ const allColumns = [
 ];
 
 type Props = {
-  registrations?: any[];
+  registrations?: Registration[]; 
 };
 const Collumns = ({registrations}: Props) => {
-  const filteredRegistration = (status: string) => {
+  const filteredRegistrationCards = useCallback((status: string) => {
     return registrations?.filter((registration) => registration.status === status)
-      .map((registration) => {
-      return (
-        <RegistrationCard
-          data={registration}
-          key={registration.id}
-        />
-      );
-    })
-  }
+    .map((registration) => {
+    return (
+      <RegistrationCard
+        data={registration}
+        key={registration.id}
+      />
+    );
+  })
+  }, [registrations])
 
   return (
     <S.Container>
@@ -34,7 +36,7 @@ const Collumns = ({registrations}: Props) => {
                 {title}
               </S.TitleColumn>
               <S.CollumContent>
-                {filteredRegistration(status)}
+                {filteredRegistrationCards(status)}
               </S.CollumContent>
             </>
           </S.Column>
