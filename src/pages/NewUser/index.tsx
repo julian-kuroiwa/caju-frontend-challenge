@@ -2,30 +2,26 @@ import { Formik } from 'formik';
 import { useContext } from 'react';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { useHistory } from 'react-router-dom';
-import * as Yup from 'yup';
 import Button from '~/components/Buttons';
 import { IconButton } from '~/components/Buttons/IconButton';
 import TextField from '~/components/TextField';
-import {
-  Registration,
-  RegistrationContext,
-} from '~/contexts/RegistrationsContext';
+import { RegistrationContext } from '~/contexts/RegistrationsContext';
 import routes from '~/router/routes';
+import { Registration, StatusType } from '~/types/registration';
 import { masks } from '~/utils/masks';
 import { sanitize } from '~/utils/sanitize';
-import { cpfValidation } from '~/utils/validations';
+import { validationSchema } from './schemaValidation';
 import * as S from './styles';
+
+const { REVIEW } = StatusType;
 
 const initialValues = {
   employeeName: '',
   email: '',
   cpf: '',
   admissionDate: '',
-  status: 'REVIEW',
+  status: REVIEW,
 } as Registration;
-
-const fullNameRegex =
-  /(^[A-Za-z]{2,})([ ]{0,1})([A-Za-z]{2,})?([ ]{0,1})?([A-Za-z]{2,})?([ ]{0,1})?([A-Za-z]{2,})/;
 
 const NewUserPage = () => {
   const { addNewRegistration } = useContext(RegistrationContext);
@@ -33,21 +29,6 @@ const NewUserPage = () => {
   const goToHome = () => {
     history.push(routes.dashboard);
   };
-
-  const schema = Yup.object({
-    employeeName: Yup.string()
-      .matches(fullNameRegex, 'Nome inválido')
-      .required('Nome é obrigatório'),
-    email: Yup.string()
-      .email('E-mail é inválido')
-      .required('E-mail é obrigatorio'),
-    cpf: Yup.string()
-      .test('cpf', 'Cpf é inválido', (value: string | undefined) =>
-        cpfValidation(value || ''),
-      )
-      .required('CPF é obrigatório'),
-    admissionDate: Yup.string().required('Data de admissão é obrigatório'),
-  });
 
   const onSubmit = async (values: Registration) => {
     await addNewRegistration(values);
@@ -58,7 +39,7 @@ const NewUserPage = () => {
     <S.Container>
       <Formik
         initialValues={initialValues}
-        validationSchema={schema}
+        validationSchema={validationSchema}
         validateOnChange
         validateOnBlur
         onSubmit={onSubmit}>

@@ -1,13 +1,8 @@
 import { useCallback } from 'react';
-import { Registration } from '~/contexts/RegistrationsContext';
+import { Registration } from '~/types/registration';
+import { columns } from '../../constants';
 import RegistrationCard from '../RegistrationCard';
 import * as S from './styles';
-
-const allColumns = [
-  { status: 'REVIEW', title: 'Pronto para revisar' },
-  { status: 'APPROVED', title: 'Aprovado' },
-  { status: 'REPROVED', title: 'Reprovado' },
-];
 
 type Props = {
   registrations?: Registration[];
@@ -27,7 +22,7 @@ const Collumns = ({ registrations }: Props) => {
 
   return (
     <S.Container>
-      {allColumns.map(({ status, title }) => {
+      {columns.map(({ status, title }) => {
         return (
           <S.Column status={status} key={title}>
             <>

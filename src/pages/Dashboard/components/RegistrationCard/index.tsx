@@ -5,12 +5,12 @@ import {
   HiOutlineUser,
 } from 'react-icons/hi';
 import { ButtonSmall } from '~/components/Buttons';
-import {
-  Registration,
-  RegistrationContext,
-} from '~/contexts/RegistrationsContext';
+import { RegistrationContext } from '~/contexts/RegistrationsContext';
+import { Registration, StatusType } from '~/types/registration';
 import { masks } from '~/utils/masks';
 import * as S from './styles';
+
+const { REVIEW, APPROVED, REPROVED } = StatusType;
 
 type Props = {
   data: Registration;
@@ -35,7 +35,7 @@ const RegistrationCard = ({ data }: Props) => {
         <span>{masks.date(admissionDate)}</span>
       </S.IconAndText>
       <S.Actions>
-        {status === 'REVIEW' && (
+        {status === REVIEW && (
           <>
             <ButtonSmall
               bgcolor="rgb(255, 145, 154)"
@@ -53,7 +53,7 @@ const RegistrationCard = ({ data }: Props) => {
             </ButtonSmall>
           </>
         )}
-        {(status === 'APPROVED' || status === 'REPROVED') && (
+        {(status === APPROVED || status === REPROVED) && (
           <ButtonSmall
             bgcolor="#ff8858"
             onClick={() =>

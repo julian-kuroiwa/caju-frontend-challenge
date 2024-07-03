@@ -1,14 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 import request from '~/api';
-
-export interface Registration {
-  admissionDate: string;
-  cpf: string;
-  email: string;
-  employeeName: string;
-  id: string;
-  status: string;
-}
+import { Registration } from '~/types/registration';
 
 interface RegistrationContextProps {
   children: ReactNode;
