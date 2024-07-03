@@ -1,11 +1,11 @@
-import Collumns from "./components/Columns";
-import * as S from "./styles";
-import { SearchBar } from "./components/Searchbar";
-import { useContext } from "react";
-import { RegistrationContext } from "~/contexts/RegistrationsContext";
+import { useContext } from 'react';
+import { RegistrationContext } from '~/contexts/RegistrationsContext';
+import Collumns from './components/Columns';
+import { SearchBar } from './components/Searchbar';
+import * as S from './styles';
 
 const DashboardPage = () => {
-  const {registrations} = useContext(RegistrationContext)
+  const { registrations } = useContext(RegistrationContext);
 
   return (
     <S.Container>

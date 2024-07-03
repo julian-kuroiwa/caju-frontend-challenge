@@ -1,21 +1,24 @@
-import { ButtonSmall } from "~/components/Buttons";
-import * as S from "./styles";
+import { useContext } from 'react';
 import {
+  HiOutlineCalendar,
   HiOutlineMail,
   HiOutlineUser,
-  HiOutlineCalendar,
-  HiOutlineTrash,
-} from "react-icons/hi";
-import { useContext } from "react";
-import { Registration, RegistrationContext } from "~/contexts/RegistrationsContext";
+} from 'react-icons/hi';
+import { ButtonSmall } from '~/components/Buttons';
+import {
+  Registration,
+  RegistrationContext,
+} from '~/contexts/RegistrationsContext';
+import { masks } from '~/utils/masks';
+import * as S from './styles';
 
 type Props = {
   data: Registration;
 };
 
-const RegistrationCard = ({data}: Props) => {
-  const {handleStatus, handleRemove} = useContext(RegistrationContext)
-  const {employeeName, email, admissionDate, id} = data
+const RegistrationCard = ({ data }: Props) => {
+  const { handleStatus, handleRemove } = useContext(RegistrationContext);
+  const { employeeName, email, admissionDate, id, status } = data;
 
   return (
     <S.Card>
@@ -29,14 +32,40 @@ const RegistrationCard = ({data}: Props) => {
       </S.IconAndText>
       <S.IconAndText>
         <HiOutlineCalendar />
-        <span>{admissionDate}</span>
+        <span>{masks.date(admissionDate)}</span>
       </S.IconAndText>
       <S.Actions>
-        <ButtonSmall bgcolor="rgb(255, 145, 154)" onClick={() => handleStatus({registration: data, status: 'REPROVED'})}>Reprovar</ButtonSmall>
-        <ButtonSmall bgcolor="rgb(155, 229, 155)" onClick={() => handleStatus({registration: data, status: 'APPROVED'})}>Aprovar</ButtonSmall>
-        <ButtonSmall bgcolor="#ff8858" onClick={() => handleStatus({registration: data, status: 'REVIEW'})}>Revisar novamente</ButtonSmall>
-
-        <HiOutlineTrash role="button" onClick={() => handleRemove(id)} />
+        {status === 'REVIEW' && (
+          <>
+            <ButtonSmall
+              bgcolor="rgb(255, 145, 154)"
+              onClick={() =>
+                handleStatus({ registration: data, status: 'REPROVED' })
+              }>
+              Reprovar
+            </ButtonSmall>
+            <ButtonSmall
+              bgcolor="rgb(155, 229, 155)"
+              onClick={() =>
+                handleStatus({ registration: data, status: 'APPROVED' })
+              }>
+              Aprovar
+            </ButtonSmall>
+          </>
+        )}
+        {(status === 'APPROVED' || status === 'REPROVED') && (
+          <ButtonSmall
+            bgcolor="#ff8858"
+            onClick={() =>
+              handleStatus({ registration: data, status: 'REVIEW' })
+            }>
+            Revisar novamente
+          </ButtonSmall>
+        )}
+        <S.HiOutlineTrashCustom
+          role="button"
+          onClick={() => handleRemove(id)}
+        />
       </S.Actions>
     </S.Card>
   );

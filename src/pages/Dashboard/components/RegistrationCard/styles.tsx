@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import { HiOutlineTrash } from 'react-icons/hi';
+import styled from 'styled-components';
 
 export const Card = styled.div`
   display: flex;
@@ -13,7 +14,9 @@ export const Card = styled.div`
   p {
     margin: 0;
   }
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 
 export const IconAndText = styled.div`
@@ -25,11 +28,14 @@ export const IconAndText = styled.div`
 export const Actions = styled.div`
   margin-top: 8px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 
   svg {
     cursor: pointer;
   }
+`;
+
+export const HiOutlineTrashCustom = styled(HiOutlineTrash)`
+  margin-left: auto;
 `;

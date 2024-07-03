@@ -1,6 +1,6 @@
-import Router from "~/router";
-import { Header } from "./components/Header";
-import { RegistrationProvider } from "./contexts/RegistrationsContext";
+import Router from '~/router';
+import { Header } from './components/Header';
+import { RegistrationProvider } from './contexts/RegistrationsContext';
 
 function App() {
   return (
