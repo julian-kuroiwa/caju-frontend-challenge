@@ -1,1 +1,1 @@
-export const sanitize = (value = '') => value.replace(/[^0-9]/g, '');
+export const sanitize = (value = '') => value.replace(/[^\w\s]/gi, '');

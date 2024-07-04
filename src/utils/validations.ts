@@ -1,4 +1,5 @@
-export const cpfValidation = (cpf: string) => {
+export const validations = {
+  cpf: (cpf: string) => {
   if (cpf == "00000000000") return false;
   if (cpf.length != 11) return false;
 
@@ -29,4 +30,5 @@ export const cpfValidation = (cpf: string) => {
       return false;
 
   return true;
+}
 }

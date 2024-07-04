@@ -4,6 +4,12 @@ export enum StatusType {
   REPROVED = 'REPROVED',
 }
 
+export enum StatusTranslation {
+  REVIEW = 'Pronto para revisar',
+  APPROVED = 'Aprovado',
+  REPROVED = 'Reprovado',
+}
+
 export interface Registration {
   admissionDate: string;
   cpf: string;

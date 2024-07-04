@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { cpfValidation } from "~/utils/validations";
+import { validations } from "~/utils/validations";
 
   const fullNameRegex =
   /(^[A-Za-z]{2,})([ ]{0,1})([A-Za-z]{2,})?([ ]{0,1})?([A-Za-z]{2,})?([ ]{0,1})?([A-Za-z]{2,})/;
@@ -13,7 +13,7 @@ import { cpfValidation } from "~/utils/validations";
       .required('E-mail é obrigatorio'),
     cpf: Yup.string()
       .test('cpf', 'Cpf é inválido', (value: string | undefined) =>
-        cpfValidation(value || ''),
+        validations.cpf(value || ''),
       )
       .required('CPF é obrigatório'),
     admissionDate: Yup.string().required('Data de admissão é obrigatório'),

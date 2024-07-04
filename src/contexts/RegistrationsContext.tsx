@@ -1,56 +1,91 @@
-import { ReactNode, createContext, useEffect, useState } from 'react';
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import { toast } from 'react-toastify';
 import request from '~/api';
-import { Registration } from '~/types/registration';
+import SpinnerLoadingScreen from '~/components/Loading';
+import { initialValues } from '~/constants/registrations';
+import { Registration, StatusType } from '~/types/registration';
 
 interface RegistrationContextProps {
   children: ReactNode;
 }
 
-interface HandleStatus {
-  registration: Registration;
-  status: string;
-}
-
-type RegistrationContextType = {
+interface RegistrationContextType {
   registrations: Registration[];
   getRegistrations: (props: string) => void;
   addNewRegistration: (props: Registration) => void;
-  handleStatus: (props: HandleStatus) => void;
-  handleRemove: (props: string) => void;
+  handleStatus: () => void;
+  handleRemove: () => void;
   loading: boolean;
   loadContent: () => void;
-};
+  setRegistrationNewStatus: (value: keyof typeof StatusType) => void;
+  setCurrentRegistration: (value: Registration) => void;
+  currentRegistration: Registration;
+  registrationNewStatus: keyof typeof StatusType;
+}
 
 export const RegistrationContext = createContext({} as RegistrationContextType);
+export const useRegistrationContext = () => useContext(RegistrationContext);
 
 const RegistrationProvider = ({ children }: RegistrationContextProps) => {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [loading, setLoading] = useState(true);
   const [refetch, setRefetch] = useState(true);
+  const [registrationNewStatus, setRegistrationNewStatus] = useState<
+    keyof typeof StatusType
+  >(StatusType.REVIEW);
+  const [currentRegistration, setCurrentRegistration] =
+    useState<Registration>(initialValues);
+
+  const delayTurnOffLoading = () => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 300);
+  };
 
   const addNewRegistration = async (newRegistration: Registration) => {
     setLoading(true);
 
     try {
       await request.post('/registrations', newRegistration);
+      toast('Cadastro realizado com sucesso!', { type: 'success' });
     } catch (err) {
       console.error(err);
+      toast('Erro ao tentar criar um novo cadastro. Tente novamente.', {
+        type: 'error',
+      });
     } finally {
-      setLoading(false);
+      delayTurnOffLoading();
     }
   };
 
   const getRegistrations = async (filter: string) => {
     setRefetch(false);
+    setLoading(true);
 
     try {
       const { data } = await request.get(`/registrations?${filter}`);
 
       setRegistrations(data);
+      if (filter) {
+        toast('Filtro realizado com sucesso!', { type: 'success' });
+
+        return;
+      }
+
+      toast('Registros carregados com sucesso!', { type: 'success' });
     } catch (err) {
       console.error(err);
+      toast('Erro ao tentar filtrar por CPF. Tente novamente.', {
+        type: 'error',
+      });
     } finally {
-      setLoading(false);
+      delayTurnOffLoading();
     }
   };
 
@@ -58,47 +93,68 @@ const RegistrationProvider = ({ children }: RegistrationContextProps) => {
     if (refetch) getRegistrations('');
   }, [refetch]);
 
-  const handleRemove = async (registrationId: string) => {
+  const handleRemove = async () => {
     setLoading(true);
 
     try {
-      await request.delete(`/registrations/${registrationId}`);
+      await request.delete(`/registrations/${currentRegistration?.id}`);
 
       const registrationsUpdated = registrations.filter(
-        (currentRegistration) => registrationId !== currentRegistration.id,
+        (registrationFiltered) =>
+          currentRegistration?.id !== registrationFiltered.id,
       );
 
       setRegistrations(registrationsUpdated);
+      toast(
+        `Registro de ${currentRegistration.employeeName} removido com sucesso!`,
+        { type: 'success' },
+      );
     } catch (err) {
       console.error(err);
+      toast(
+        `Erro ao tentar excluir o registro de ${currentRegistration.employeeName}. Tente novamente mais tarde.`,
+        {
+          type: 'error',
+        },
+      );
     } finally {
-      setLoading(false);
+      delayTurnOffLoading();
     }
   };
 
-  const handleStatus = async ({ registration, status }: HandleStatus) => {
+  const handleStatus = async () => {
     setLoading(true);
 
     try {
       const { data: registrationUpdated } = await request.put(
-        `/registrations/${registration.id}`,
+        `/registrations/${currentRegistration?.id}`,
         {
-          ...registration,
-          status,
+          ...currentRegistration,
+          status: registrationNewStatus,
         },
       );
 
-      const registrationsUpdated = registrations.map((currentRegistration) =>
-        currentRegistration.id === registration.id
+      const registrationsUpdated = registrations.map((registrationMapped) =>
+        registrationMapped.id === currentRegistration?.id
           ? registrationUpdated
-          : currentRegistration,
+          : registrationMapped,
       );
 
       setRegistrations(registrationsUpdated);
+      toast(
+        `Status alterado de ${currentRegistration.employeeName} com sucesso!`,
+        { type: 'success' },
+      );
     } catch (err) {
       console.error(err);
+      toast(
+        `Erro ao tentar alterar o status de ${currentRegistration.employeeName} . Tente novamente mais tarde.`,
+        {
+          type: 'error',
+        },
+      );
     } finally {
-      setLoading(false);
+      delayTurnOffLoading();
     }
   };
 
@@ -112,8 +168,13 @@ const RegistrationProvider = ({ children }: RegistrationContextProps) => {
         loading,
         loadContent: () => setRefetch(true),
         addNewRegistration,
+        setRegistrationNewStatus,
+        registrationNewStatus,
+        setCurrentRegistration,
+        currentRegistration,
       }}>
       {children}
+      <SpinnerLoadingScreen loading={loading} />
     </RegistrationContext.Provider>
   );
 };

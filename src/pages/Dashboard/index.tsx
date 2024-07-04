@@ -1,16 +1,29 @@
-import { useContext } from 'react';
-import { RegistrationContext } from '~/contexts/RegistrationsContext';
+import { useState } from 'react';
+import { useRegistrationContext } from '~/contexts/RegistrationsContext';
 import Collumns from './components/Columns';
+import RefreshContentModal from './components/Modals/RefreshContentModal';
 import { SearchBar } from './components/Searchbar';
 import * as S from './styles';
 
 const DashboardPage = () => {
-  const { registrations } = useContext(RegistrationContext);
+  const [refreshContentModalIsOpen, setRefreshContentModalIsOpen] =
+    useState(false);
+  const { registrations, loadContent } = useRegistrationContext();
+
+  const handleConfirmation = () => {
+    setRefreshContentModalIsOpen(false);
+    loadContent();
+  };
 
   return (
     <S.Container>
-      <SearchBar />
+      <SearchBar handleRefresh={() => setRefreshContentModalIsOpen(true)} />
       <Collumns registrations={registrations} />
+      <RefreshContentModal
+        isOpen={refreshContentModalIsOpen}
+        onClose={() => setRefreshContentModalIsOpen(false)}
+        handleConfirmation={handleConfirmation}
+      />
     </S.Container>
   );
 };

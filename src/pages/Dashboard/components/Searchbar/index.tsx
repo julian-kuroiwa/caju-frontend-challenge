@@ -1,20 +1,24 @@
+import { useEffect, useState } from 'react';
 import { HiRefresh } from 'react-icons/hi';
 import { useHistory } from 'react-router-dom';
 import Button from '~/components/Buttons';
 import { IconButton } from '~/components/Buttons/IconButton';
 import TextField from '~/components/TextField';
-import routes from '~/router/routes';
-import * as S from './styles';
-import { masks } from '~/utils/masks';
-import { useContext, useEffect, useState } from 'react';
-import { RegistrationContext } from '~/contexts/RegistrationsContext';
+import { useRegistrationContext } from '~/contexts/RegistrationsContext';
 import { useDebounce } from '~/hooks/useDebounce';
+import routes from '~/router/routes';
+import { masks } from '~/utils/masks';
 import { sanitize } from '~/utils/sanitize';
+import * as S from './styles';
 
-export const SearchBar = () => {
+type Props = {
+  handleRefresh: () => void;
+};
+
+export const SearchBar = ({ handleRefresh }: Props) => {
   const history = useHistory();
   const [value, setValue] = useState('');
-  const { loadContent, getRegistrations } = useContext(RegistrationContext);
+  const { getRegistrations } = useRegistrationContext();
   const debouncedValue = useDebounce(value);
 
   const goToNewAdmissionPage = () => {
@@ -34,7 +38,7 @@ export const SearchBar = () => {
         value={value}
       />
       <S.Actions>
-        <IconButton aria-label="refetch" onClick={loadContent}>
+        <IconButton aria-label="refetch" onClick={handleRefresh}>
           <HiRefresh />
         </IconButton>
         <Button onClick={() => goToNewAdmissionPage()}>Nova Admissão</Button>

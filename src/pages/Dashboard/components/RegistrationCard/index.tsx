@@ -1,11 +1,11 @@
-import { useContext } from 'react';
+import { useCallback } from 'react';
 import {
   HiOutlineCalendar,
   HiOutlineMail,
   HiOutlineUser,
 } from 'react-icons/hi';
 import { ButtonSmall } from '~/components/Buttons';
-import { RegistrationContext } from '~/contexts/RegistrationsContext';
+import { useRegistrationContext } from '~/contexts/RegistrationsContext';
 import { Registration, StatusType } from '~/types/registration';
 import { masks } from '~/utils/masks';
 import * as S from './styles';
@@ -14,11 +14,34 @@ const { REVIEW, APPROVED, REPROVED } = StatusType;
 
 type Props = {
   data: Registration;
+  handleChangeStatusAction: () => void;
+  handleRemoveAction: () => void;
 };
 
-const RegistrationCard = ({ data }: Props) => {
-  const { handleStatus, handleRemove } = useContext(RegistrationContext);
-  const { employeeName, email, admissionDate, id, status } = data;
+const RegistrationCard = ({
+  data,
+  handleChangeStatusAction,
+  handleRemoveAction,
+}: Props) => {
+  const { setRegistrationNewStatus, setCurrentRegistration } =
+    useRegistrationContext();
+  const { employeeName, email, admissionDate, status } = data;
+
+  const handleStatusAction = useCallback(
+    (status: keyof typeof StatusType) => {
+      setRegistrationNewStatus(status);
+      setCurrentRegistration(data);
+
+      handleChangeStatusAction();
+    },
+    [data],
+  );
+
+  const handleDeleteAction = useCallback(() => {
+    setCurrentRegistration(data);
+
+    handleRemoveAction();
+  }, [data]);
 
   return (
     <S.Card>
@@ -39,16 +62,12 @@ const RegistrationCard = ({ data }: Props) => {
           <>
             <ButtonSmall
               bgcolor="rgb(255, 145, 154)"
-              onClick={() =>
-                handleStatus({ registration: data, status: 'REPROVED' })
-              }>
+              onClick={() => handleStatusAction(REPROVED)}>
               Reprovar
             </ButtonSmall>
             <ButtonSmall
               bgcolor="rgb(155, 229, 155)"
-              onClick={() =>
-                handleStatus({ registration: data, status: 'APPROVED' })
-              }>
+              onClick={() => handleStatusAction(APPROVED)}>
               Aprovar
             </ButtonSmall>
           </>
@@ -56,16 +75,11 @@ const RegistrationCard = ({ data }: Props) => {
         {(status === APPROVED || status === REPROVED) && (
           <ButtonSmall
             bgcolor="#ff8858"
-            onClick={() =>
-              handleStatus({ registration: data, status: 'REVIEW' })
-            }>
+            onClick={() => handleStatusAction(REVIEW)}>
             Revisar novamente
           </ButtonSmall>
         )}
-        <S.HiOutlineTrashCustom
-          role="button"
-          onClick={() => handleRemove(id)}
-        />
+        <S.HiOutlineTrashCustom role="button" onClick={handleDeleteAction} />
       </S.Actions>
     </S.Card>
   );
