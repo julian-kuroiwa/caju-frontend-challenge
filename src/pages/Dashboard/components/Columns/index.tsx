@@ -1,37 +1,19 @@
-import { useState } from 'react';
-import { useRegistrationContext } from '~/contexts/RegistrationsContext';
 import { Registration } from '~/types/registration';
 import { columns } from '../../constants';
-import ChangeStatusModal from '../Modals/ChangeStatusModal';
-import DeleteRegistrationModal from '../Modals/DeleteRegistrationModal';
 import RegistrationCard from '../RegistrationCard';
 import * as S from './styles';
 
 type Props = {
   registrations?: Registration[];
+  handleRemoveCard: () => void;
+  handleChangeStatus: () => void;
 };
 
-const Collumns = ({ registrations }: Props) => {
-  const [changeStatusModalIsOpen, setChangeStatusModalIsOpen] = useState(false);
-  const [deleteRegistrationModalIsOpen, setDeleteRegistrationModalIsOpen] =
-    useState(false);
-  const {
-    handleStatus,
-    handleRemove,
-    currentRegistration,
-    registrationNewStatus,
-  } = useRegistrationContext();
-
-  const handleStatusChangeConfirmation = async () => {
-    await handleStatus();
-    setChangeStatusModalIsOpen(false);
-  };
-
-  const handleDeleteConfirmation = async () => {
-    await handleRemove();
-    setDeleteRegistrationModalIsOpen(false);
-  };
-
+const Collumns = ({
+  registrations,
+  handleRemoveCard,
+  handleChangeStatus,
+}: Props) => {
   return (
     <S.Container>
       {columns.map(({ status, title }) => {
@@ -47,12 +29,8 @@ const Collumns = ({ registrations }: Props) => {
                       <RegistrationCard
                         data={registration}
                         key={registration.id}
-                        handleChangeStatusAction={() =>
-                          setChangeStatusModalIsOpen(true)
-                        }
-                        handleRemoveAction={() =>
-                          setDeleteRegistrationModalIsOpen(true)
-                        }
+                        handleChangeStatusAction={handleChangeStatus}
+                        handleRemoveAction={handleRemoveCard}
                       />
                     );
                   })}
@@ -61,19 +39,6 @@ const Collumns = ({ registrations }: Props) => {
           </S.Column>
         );
       })}
-      <ChangeStatusModal
-        isOpen={changeStatusModalIsOpen}
-        onClose={() => setChangeStatusModalIsOpen(false)}
-        handleStatusChangeConfirmation={handleStatusChangeConfirmation}
-        currentRegistration={currentRegistration}
-        newStatus={registrationNewStatus}
-      />
-      <DeleteRegistrationModal
-        isOpen={deleteRegistrationModalIsOpen}
-        onClose={() => setDeleteRegistrationModalIsOpen(false)}
-        handleDeleteConfirmation={handleDeleteConfirmation}
-        currentRegistration={currentRegistration}
-      />
     </S.Container>
   );
 };

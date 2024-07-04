@@ -1,10 +1,4 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import request from '~/api';
 import SpinnerLoadingScreen from '~/components/Loading';
@@ -35,7 +29,7 @@ export const useRegistrationContext = () => useContext(RegistrationContext);
 const RegistrationProvider = ({ children }: RegistrationContextProps) => {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [loading, setLoading] = useState(true);
-  const [refetch, setRefetch] = useState(true);
+  const [refetch, setRefetch] = useState(false);
   const [registrationNewStatus, setRegistrationNewStatus] = useState<
     keyof typeof StatusType
   >(StatusType.REVIEW);
@@ -88,10 +82,6 @@ const RegistrationProvider = ({ children }: RegistrationContextProps) => {
       delayTurnOffLoading();
     }
   };
-
-  useEffect(() => {
-    if (refetch) getRegistrations('');
-  }, [refetch]);
 
   const handleRemove = async () => {
     setLoading(true);
