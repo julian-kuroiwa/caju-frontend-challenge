@@ -71,7 +71,11 @@ const RegistrationProvider = ({ children }: RegistrationContextProps) => {
 
       setRegistrations(data);
       if (filter) {
-        toast('Filtro realizado com sucesso!', { type: 'success' });
+        if (data.length) {
+          toast('Filtro realizado com sucesso!', { type: 'success' });
+        } else {
+          toast('Nenhum registro encontrado', { type: 'warning' });
+        }
 
         return;
       }

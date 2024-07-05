@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode } from 'react';
 import { CgClose } from 'react-icons/cg';
 import * as S from './styles';
 
@@ -9,21 +9,9 @@ type Props = {
 };
 
 const Modal = ({ openModal, closeModal, children }: Props) => {
-  const backdrop = useRef<HTMLElement>(null);
-
-  // useEffect(() => {
-  //   if (openModal) {
-  //     document.addEventListener('mousedown', handleClickOutside);
-  //   }
-
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //   };
-  // }, [openModal]);
-
   if (openModal) {
     return (
-      <S.Backdrop ref={backdrop}>
+      <S.Backdrop>
         <S.Container>
           <S.Close onClick={closeModal}>
             <CgClose />
