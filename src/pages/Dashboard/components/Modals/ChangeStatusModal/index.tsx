@@ -1,6 +1,10 @@
-import Button from "~/components/Buttons";
-import Modal from "~/components/Modal";
-import { Registration, StatusTranslation, StatusType } from "~/types/registration";
+import Button from '~/components/Buttons';
+import Modal from '~/components/Modal';
+import {
+  Registration,
+  StatusTranslation,
+  StatusType,
+} from '~/types/registration';
 import * as S from '../styles';
 
 type Props = {
@@ -19,7 +23,10 @@ const ChangeStatusModal = ({
   newStatus,
 }: Props) => {
   return (
-    <Modal openModal={isOpen} closeModal={onClose}>
+    <Modal
+      openModal={isOpen}
+      closeModal={onClose}
+      data-testid="change-status-modal">
       <S.Header>
         <S.Title>Alterar status</S.Title>
       </S.Header>
@@ -40,4 +47,4 @@ const ChangeStatusModal = ({
   );
 };
 
-export default ChangeStatusModal
+export default ChangeStatusModal;

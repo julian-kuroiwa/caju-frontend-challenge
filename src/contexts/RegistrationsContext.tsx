@@ -29,7 +29,7 @@ export const useRegistrationContext = () => useContext(RegistrationContext);
 const RegistrationProvider = ({ children }: RegistrationContextProps) => {
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [loading, setLoading] = useState(true);
-  const [refetch, setRefetch] = useState(false);
+  const [_, setRefetch] = useState(false);
   const [registrationNewStatus, setRegistrationNewStatus] = useState<
     keyof typeof StatusType
   >(StatusType.REVIEW);

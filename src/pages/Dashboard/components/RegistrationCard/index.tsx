@@ -44,7 +44,7 @@ const RegistrationCard = ({
   }, [data]);
 
   return (
-    <S.Card>
+    <S.Card data-testid={`registration-card-${data.status}`}>
       <S.IconAndText>
         <HiOutlineUser />
         <h3>{employeeName}</h3>
@@ -62,12 +62,14 @@ const RegistrationCard = ({
           <>
             <ButtonSmall
               bgcolor="rgb(255, 145, 154)"
-              onClick={() => handleStatusAction(REPROVED)}>
+              onClick={() => handleStatusAction(REPROVED)}
+              data-testid="change-status-modal-reproved-button">
               Reprovar
             </ButtonSmall>
             <ButtonSmall
               bgcolor="rgb(155, 229, 155)"
-              onClick={() => handleStatusAction(APPROVED)}>
+              onClick={() => handleStatusAction(APPROVED)}
+              data-testid="change-status-modal-approved-button">
               Aprovar
             </ButtonSmall>
           </>
@@ -75,11 +77,16 @@ const RegistrationCard = ({
         {(status === APPROVED || status === REPROVED) && (
           <ButtonSmall
             bgcolor="#ff8858"
-            onClick={() => handleStatusAction(REVIEW)}>
+            onClick={() => handleStatusAction(REVIEW)}
+            data-testid="change-status-modal-review-button">
             Revisar novamente
           </ButtonSmall>
         )}
-        <S.HiOutlineTrashCustom role="button" onClick={handleDeleteAction} />
+        <S.HiOutlineTrashCustom
+          role="button"
+          data-testid="delete-button"
+          onClick={handleDeleteAction}
+        />
       </S.Actions>
     </S.Card>
   );

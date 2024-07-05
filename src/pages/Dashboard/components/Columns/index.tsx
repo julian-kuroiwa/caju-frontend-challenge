@@ -18,7 +18,7 @@ const Collumns = ({
     <S.Container>
       {columns.map(({ status, title }) => {
         return (
-          <S.Column status={status} key={title}>
+          <S.Column status={status} key={title} data-testid={status}>
             <>
               <S.TitleColumn status={status}>{title}</S.TitleColumn>
               <S.CollumContent>

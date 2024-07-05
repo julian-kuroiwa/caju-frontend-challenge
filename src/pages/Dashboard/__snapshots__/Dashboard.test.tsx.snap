@@ -3,15 +3,15 @@
 exports[`Dashboard should match snapshot 1`] = `
 <div>
   <div
-    class="sc-feUYzb fJgaNg"
+    class="sc-fUnNpA gemtlB"
   >
     <div
-      class="sc-ikkyvV hJsKvX"
+      class="sc-dAbbbq gLsorF"
     >
       <div>
         <label />
         <input
-          class="sc-gFqAYk iiXdnO"
+          class="sc-ikkyvV cFfilt"
           placeholder="Digite um CPF válido"
           value=""
         />
@@ -20,11 +20,11 @@ exports[`Dashboard should match snapshot 1`] = `
         />
       </div>
       <div
-        class="sc-dAbbbq imatVj"
+        class="sc-feUYzb bFBuUm"
       >
         <button
           aria-label="refetch"
-          class="sc-fPXMhL kSztpp"
+          class="sc-gFqAYk kFHuXB"
         >
           <svg
             aria-hidden="true"
@@ -51,232 +51,380 @@ exports[`Dashboard should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="sc-cPiJYC bIIxTq"
+      class="sc-imWZod iahWDi"
     >
       <div
-        class="sc-dLNtp gESJjk"
+        class="sc-jXbVAB iTQlrL"
+        data-testid="REVIEW"
         status="REVIEW"
       >
         <h3
-          class="sc-eDPFhE gdhPIh"
+          class="sc-dhKdPU fzUDCd"
           status="REVIEW"
         >
           Pronto para revisar
         </h3>
         <div
-          class="sc-eldOKa eshMLC"
-        />
+          class="sc-kpDprT gEiEmr"
+        >
+          <div
+            class="sc-dcJtft cMKrRQ"
+            data-testid="registration-card-REVIEW"
+          >
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <h3>
+                José Leão
+              </h3>
+            </div>
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p>
+                jose@caju.com.br
+              </p>
+            </div>
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>
+                22/10/2023
+              </span>
+            </div>
+            <div
+              class="sc-gsFSjX LLUum"
+            >
+              <button
+                bgcolor="rgb(255, 145, 154)"
+                class="sc-fqkwJk eGPNoB"
+                data-testid="change-status-modal-reproved-button"
+              >
+                Reprovar
+              </button>
+              <button
+                bgcolor="rgb(155, 229, 155)"
+                class="sc-fqkwJk jCekve"
+                data-testid="change-status-modal-approved-button"
+              >
+                Aprovar
+              </button>
+              <svg
+                aria-hidden="true"
+                class="sc-kAycRU gOPfrk"
+                data-testid="delete-button"
+                fill="none"
+                height="1em"
+                role="button"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
       <div
-        class="sc-dLNtp eKXDQu"
+        class="sc-jXbVAB cVhtxp"
+        data-testid="APPROVED"
         status="APPROVED"
       >
         <h3
-          class="sc-eDPFhE eNPYHR"
+          class="sc-dhKdPU fwWCsB"
           status="APPROVED"
         >
           Aprovado
         </h3>
         <div
-          class="sc-eldOKa eshMLC"
-        />
+          class="sc-kpDprT gEiEmr"
+        >
+          <div
+            class="sc-dcJtft cMKrRQ"
+            data-testid="registration-card-APPROVED"
+          >
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <h3>
+                Filipe Marins
+              </h3>
+            </div>
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p>
+                filipe@caju.com.br
+              </p>
+            </div>
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>
+                22/10/2023
+              </span>
+            </div>
+            <div
+              class="sc-gsFSjX LLUum"
+            >
+              <button
+                bgcolor="#ff8858"
+                class="sc-fqkwJk cjmksH"
+                data-testid="change-status-modal-review-button"
+              >
+                Revisar novamente
+              </button>
+              <svg
+                aria-hidden="true"
+                class="sc-kAycRU gOPfrk"
+                data-testid="delete-button"
+                fill="none"
+                height="1em"
+                role="button"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
       <div
-        class="sc-dLNtp kLyuzh"
+        class="sc-jXbVAB cnqFim"
+        data-testid="REPROVED"
         status="REPROVED"
       >
         <h3
-          class="sc-eDPFhE jHYkNV"
+          class="sc-dhKdPU fIZMKx"
           status="REPROVED"
         >
           Reprovado
         </h3>
         <div
-          class="sc-eldOKa eshMLC"
-        />
+          class="sc-kpDprT gEiEmr"
+        >
+          <div
+            class="sc-dcJtft cMKrRQ"
+            data-testid="registration-card-REPROVED"
+          >
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <h3>
+                Teste teste
+              </h3>
+            </div>
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <p>
+                teste@teste.com
+              </p>
+            </div>
+            <div
+              class="sc-iGgVNO fbVpXc"
+            >
+              <svg
+                aria-hidden="true"
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <span>
+                09/10/2023
+              </span>
+            </div>
+            <div
+              class="sc-gsFSjX LLUum"
+            >
+              <button
+                bgcolor="#ff8858"
+                class="sc-fqkwJk cjmksH"
+                data-testid="change-status-modal-review-button"
+              >
+                Revisar novamente
+              </button>
+              <svg
+                aria-hidden="true"
+                class="sc-kAycRU gOPfrk"
+                data-testid="delete-button"
+                fill="none"
+                height="1em"
+                role="button"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </div>
-      <dialog
-        class="sc-dcJtft hrjiJ"
-      >
-        <button
-          class="sc-gsFSjX kCGGWG"
-        >
-          <svg
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-        <div
-          class="sc-iGgVNO kPMHuE"
-        >
-          <header
-            class="sc-kAycRU dcFgST"
-          >
-            <h2
-              class="sc-imWZod hHovnE"
-            >
-              Alterar status
-            </h2>
-          </header>
-          <div
-            class="sc-jXbVAB"
-          >
-            <p
-              class="sc-dhKdPU dDmOMw"
-            >
-              Você está alterando o status de
-               
-              <strong />
-               de
-               
-              <strong>
-                Pronto para revisar
-              </strong>
-               para
-               
-              <strong>
-                Pronto para revisar
-              </strong>
-              .
-            </p>
-          </div>
-          <footer
-            class="sc-kpDprT KUcKe"
-          >
-            <button
-              class="sc-eqUzNf gvJhSY"
-              type="button"
-            >
-              Confirmar
-            </button>
-          </footer>
-        </div>
-      </dialog>
-      <dialog
-        class="sc-dcJtft hrjiJ"
-      >
-        <button
-          class="sc-gsFSjX kCGGWG"
-        >
-          <svg
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-        <div
-          class="sc-iGgVNO kPMHuE"
-        >
-          <header
-            class="sc-kAycRU dcFgST"
-          >
-            <h2
-              class="sc-imWZod hHovnE"
-            >
-              Remover registro
-            </h2>
-          </header>
-          <div
-            class="sc-jXbVAB"
-          >
-            <p
-              class="sc-dhKdPU dDmOMw"
-            >
-              Você está removendo o registro de
-               
-              <strong />
-               do board.
-            </p>
-          </div>
-          <footer
-            class="sc-kpDprT KUcKe"
-          >
-            <button
-              class="sc-eqUzNf gvJhSY"
-              type="button"
-            >
-              Confirmar
-            </button>
-          </footer>
-        </div>
-      </dialog>
     </div>
-    <dialog
-      class="sc-dcJtft hrjiJ"
-    >
-      <button
-        class="sc-gsFSjX kCGGWG"
-      >
-        <svg
-          fill="none"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z"
-            fill="currentColor"
-          />
-        </svg>
-      </button>
-      <div
-        class="sc-iGgVNO kPMHuE"
-      >
-        <header
-          class="sc-kAycRU dcFgST"
-        >
-          <h2
-            class="sc-imWZod hHovnE"
-          >
-            Atualizar registros
-          </h2>
-        </header>
-        <div
-          class="sc-jXbVAB"
-        >
-          <p
-            class="sc-dhKdPU dDmOMw"
-          >
-            Você irá recarregar as informações do dashboard.
-          </p>
-        </div>
-        <footer
-          class="sc-kpDprT KUcKe"
-        >
-          <button
-            class="sc-eqUzNf gvJhSY"
-            type="button"
-          >
-            Confirmar
-          </button>
-        </footer>
-      </div>
-    </dialog>
   </div>
   <div
     class="sc-aYaIB jZrxtb"
+    date-testid="loader"
   >
     <div
       class="sc-gEvDqW gEDMht"
