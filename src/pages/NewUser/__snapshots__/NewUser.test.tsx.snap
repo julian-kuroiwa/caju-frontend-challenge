@@ -3,10 +3,10 @@
 exports[`NewUser should match snapshot 1`] = `
 <div>
   <div
-    class="sc-gsFSjX cnYFcK"
+    class="sc-jEABJj hWxHRx"
   >
     <div
-      class="sc-kAycRU iVltdX"
+      class="sc-cPiJYC fiMmwi"
     >
       <button
         aria-label="back"
@@ -30,7 +30,7 @@ exports[`NewUser should match snapshot 1`] = `
         </svg>
       </button>
       <form
-        class="sc-imWZod cNUZzl"
+        class="sc-dLNtp bzLKMx"
         novalidate=""
       >
         <div>
@@ -116,6 +116,7 @@ exports[`NewUser should match snapshot 1`] = `
             class="sc-iGgVNO hMJbhL"
             name="status"
             type="hidden"
+            value="REVIEW"
           />
           <span
             data-testid="error-message-undefined"

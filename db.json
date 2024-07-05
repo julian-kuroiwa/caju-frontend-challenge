@@ -5,7 +5,7 @@
       "admissionDate": "22/10/2023",
       "email": "jose@caju.com.br",
       "employeeName": "José Leão",
-      "status": "REPROVED",
+      "status": "APPROVED",
       "cpf": "78502270001"
     },
     {
@@ -13,14 +13,14 @@
       "admissionDate": "22/10/2023",
       "email": "filipe@caju.com.br",
       "employeeName": "Filipe Marins",
-      "status": "APPROVED",
+      "status": "REPROVED",
       "cpf": "39487627388"
     },
     {
       "id": "8356",
       "employeeName": "asd sd",
       "email": "asdasd@sadas.com",
-      "cpf": "39510209899",
+      "cpf": "07519682005",
       "admissionDate": "2000-10-10",
       "status": "REVIEW"
     }

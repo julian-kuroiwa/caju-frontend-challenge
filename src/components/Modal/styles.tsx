@@ -12,7 +12,7 @@ export const Backdrop = styled.div`
 export const Container = styled.div`
   border: 0;
   border-radius: 8px;
-  padding: 32px;
+  padding: 24px;
   position: absolute;
   background-color: #fff;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.35);
@@ -25,14 +25,12 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.div`
-  padding: 16px;
-`;
+export const Content = styled.div``;
 
 export const Close = styled.button`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   background: transparent;
   text-transform: uppercase;
   border: 0;

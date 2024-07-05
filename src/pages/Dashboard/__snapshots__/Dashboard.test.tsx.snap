@@ -6,12 +6,12 @@ exports[`Dashboard should match snapshot 1`] = `
     class="sc-fUnNpA gemtlB"
   >
     <div
-      class="sc-dAbbbq gLsorF"
+      class="sc-cwHqhk fYffUJ"
     >
       <div>
         <label />
         <input
-          class="sc-ikkyvV cFfilt"
+          class="sc-jlZhRR jsGjNp"
           placeholder="Digite um CPF válido"
           value=""
         />
@@ -21,11 +21,11 @@ exports[`Dashboard should match snapshot 1`] = `
         />
       </div>
       <div
-        class="sc-feUYzb bFBuUm"
+        class="sc-jEABJj kgEuvB"
       >
         <button
           aria-label="refetch"
-          class="sc-gFqAYk kFHuXB"
+          class="sc-dAlxHm eFbcSi"
         >
           <svg
             aria-hidden="true"

@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { useHistory } from 'react-router-dom';
@@ -11,10 +12,13 @@ import routes from '~/router/routes';
 import { NewRegistration } from '~/types/registration';
 import { masks } from '~/utils/masks';
 import { sanitize } from '~/utils/sanitize';
+import ConfirmationModal from './modals/ConfirmationModal';
 import * as S from './styles';
 import { validationSchema } from './validationSchema';
 
 const NewUserPage = () => {
+  const [openConfirmationModal, setOpenConfirmationModal] = useState(false)
+  const [formData, setFormData] = useState<NewRegistration>(initialValues)
   const { addNewRegistration } = useRegistrationContext();
   const history = useHistory();
   const goToHome = () => {
@@ -35,14 +39,19 @@ const NewUserPage = () => {
     resolver,
   });
 
+  const handleConfirmation = async () => {
+    await addNewRegistration(formData);
+    goToHome();
+  }
+
   const onSubmit: SubmitHandler<NewRegistration> = async (data) => {
-    const formData = {
+    const newRegistration = {
       ...data,
       cpf: sanitize(data.cpf),
     };
 
-    await addNewRegistration(formData);
-    goToHome();
+    setFormData(newRegistration)
+    setOpenConfirmationModal(true)
   };
 
   return (
@@ -111,6 +120,7 @@ const NewUserPage = () => {
           <Button>Cadastrar</Button>
         </S.CustomForm>
       </S.Card>
+      <ConfirmationModal isOpen={openConfirmationModal} onClose={() => setOpenConfirmationModal(false)} handleConfirmation={handleConfirmation} />
     </S.Container>
   );
 };

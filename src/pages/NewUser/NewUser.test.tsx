@@ -49,6 +49,12 @@ describe('NewUser', () => {
     const submitButton = screen.getByText('Cadastrar');
     fireEvent.click(submitButton);
 
+    const confirmationButton = await screen.findByRole('button', {
+      name: 'Confirmar',
+    });
+
+    fireEvent.click(confirmationButton);
+
     await waitFor(() => expect(pushMock).toHaveBeenCalledTimes(1));
   });
 

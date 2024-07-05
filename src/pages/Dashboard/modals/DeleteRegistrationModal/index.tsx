@@ -1,9 +1,9 @@
 import Button from '~/components/Buttons';
 import Modal from '~/components/Modal';
+import * as S from '~/pages/modalStyles';
 import {
   Registration
 } from '~/types/registration';
-import * as S from '../styles';
 
 type Props = {
   isOpen: boolean;

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useRegistrationContext } from '~/contexts/RegistrationsContext';
 import Collumns from './components/Columns';
-import ChangeStatusModal from './components/Modals/ChangeStatusModal';
-import DeleteRegistrationModal from './components/Modals/DeleteRegistrationModal';
-import RefreshContentModal from './components/Modals/RefreshContentModal';
 import { SearchBar } from './components/Searchbar';
+import ChangeStatusModal from './modals/ChangeStatusModal';
+import DeleteRegistrationModal from './modals/DeleteRegistrationModal';
+import RefreshContentModal from './modals/RefreshContentModal';
 import * as S from './styles';
 
 const DashboardPage = () => {

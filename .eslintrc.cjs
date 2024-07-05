@@ -28,8 +28,8 @@ module.exports = {
     "react/display-name": "off",
     "@typescript-eslint/ban-types": "off",
     "import/named": "off",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off",
     "import/no-unresolved": "off",
-    "@typescript-eslint/no-unused-vars": "warn"
+    "@typescript-eslint/no-unused-vars": "off",
   },
 };

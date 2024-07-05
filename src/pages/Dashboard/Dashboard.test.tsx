@@ -5,6 +5,7 @@ import {
   waitFor,
   within,
 } from '@testing-library/react';
+import { act } from 'react';
 import { RegistrationProvider } from '~/contexts/RegistrationsContext';
 import { registrationsMock } from '~/mocks/responses/registrations';
 import DashboardPage from '.';
@@ -58,7 +59,7 @@ describe('Dashboard', () => {
     const searchInput = screen.getByPlaceholderText('Digite um CPF válido');
     fireEvent.change(searchInput, { target: { value } });
 
-    jest.advanceTimersByTime(1000);
+    act(() => jest.advanceTimersByTime(1000))
 
     const registrationCards = await screen.findAllByTestId(
       'registration-card',
