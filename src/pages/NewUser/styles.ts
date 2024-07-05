@@ -1,4 +1,3 @@
-import { Form } from "formik";
 import styled from "styled-components";
 import Button from "~/components/Buttons";
 import { _IconButtonStyled } from "~/components/Buttons/IconButton";
@@ -23,7 +22,7 @@ export const Card = styled.div`
   }
 `;
 
-export const CustomForm = styled(Form)`
+export const CustomForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;

@@ -7,6 +7,7 @@ import TextField from '~/components/TextField';
 import { useDebounce } from '~/hooks/useDebounce';
 import routes from '~/router/routes';
 import { masks } from '~/utils/masks';
+import { sanitize } from '~/utils/sanitize';
 import * as S from './styles';
 
 type Props = {
@@ -26,13 +27,13 @@ export const SearchBar = ({ handleRefresh, handleSearch }: Props) => {
   useEffect(() => {
     const filter = debouncedValue ? `cpf=${debouncedValue}` : '';
     handleSearch(filter);
-  }, [debouncedValue]);
+  }, [debouncedValue, handleSearch]);
 
   return (
     <S.Container>
       <TextField
         placeholder="Digite um CPF válido"
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setValue(sanitize(e.target.value))}
         value={masks.cpf(value)}
       />
       <S.Actions>

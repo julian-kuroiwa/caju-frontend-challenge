@@ -1,4 +1,5 @@
-import { Formik } from 'formik';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { HiOutlineArrowLeft } from 'react-icons/hi';
 import { useHistory } from 'react-router-dom';
 import Button from '~/components/Buttons';
@@ -7,11 +8,11 @@ import TextField from '~/components/TextField';
 import { initialValues } from '~/constants/registrations';
 import { useRegistrationContext } from '~/contexts/RegistrationsContext';
 import routes from '~/router/routes';
-import { Registration } from '~/types/registration';
+import { NewRegistration } from '~/types/registration';
 import { masks } from '~/utils/masks';
 import { sanitize } from '~/utils/sanitize';
-import { validationSchema } from './schemaValidation';
 import * as S from './styles';
+import { validationSchema } from './validationSchema';
 
 const NewUserPage = () => {
   const { addNewRegistration } = useRegistrationContext();
@@ -20,8 +21,27 @@ const NewUserPage = () => {
     history.push(routes.dashboard);
   };
 
-  const onSubmit = async (values: Registration) => {
-    await addNewRegistration(values);
+  const resolver = yupResolver(validationSchema);
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+    reValidateMode: 'onChange',
+    defaultValues: initialValues,
+    resolver,
+  });
+
+  const onSubmit: SubmitHandler<NewRegistration> = async (data) => {
+    const formData = {
+      ...data,
+      cpf: sanitize(data.cpf),
+    };
+
+    await addNewRegistration(formData);
     goToHome();
   };
 
@@ -31,70 +51,65 @@ const NewUserPage = () => {
         <IconButton onClick={() => goToHome()} aria-label="back">
           <HiOutlineArrowLeft size={24} />
         </IconButton>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          validateOnBlur
-          onSubmit={onSubmit}>
-          {({ handleSubmit, errors, values, setFieldValue }) => {
-            return (
-              <S.CustomForm onSubmit={handleSubmit} noValidate>
-                <TextField
-                  id="name"
-                  placeholder="Nome"
-                  label="Nome"
-                  name="employeeName"
-                  value={values.employeeName}
-                  onChange={(e) => {
-                    const { value } = e.target;
-                    setFieldValue('employeeName', value);
-                  }}
-                  error={errors.employeeName as string}
-                />
-                <TextField
-                  id="email"
-                  placeholder="Email"
-                  label="Email"
-                  type="email"
-                  name="email"
-                  value={values.email}
-                  onChange={(e) => {
-                    const { value } = e.target;
-                    setFieldValue('email', value);
-                  }}
-                  error={errors.email as string}
-                />
-                <TextField
-                  id="cpf"
-                  placeholder="CPF"
-                  label="CPF"
-                  name="cpf"
-                  onChange={(e) => {
-                    const { value } = e.target;
+        <S.CustomForm onSubmit={handleSubmit(onSubmit)} noValidate>
+          <Controller
+            control={control}
+            name="employeeName"
+            render={({ field }) => (
+              <TextField
+                id="name"
+                placeholder="Nome"
+                label="Nome"
+                {...field}
+                error={errors.employeeName?.message}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="email"
+            render={({ field }) => (
+              <TextField
+                id="email"
+                placeholder="Email"
+                label="Email"
+                type="email"
+                {...field}
+                error={errors.email?.message}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="cpf"
+            render={({ field }) => (
+              <TextField
+                id="cpf"
+                placeholder="CPF"
+                label="CPF"
+                {...field}
+                value={masks.cpf(field.value)}
+                error={errors.cpf?.message}
+              />
+            )}
+          />
+          <Controller
+            control={control}
+            name="admissionDate"
+            render={({ field }) => (
+              <TextField
+                id="date"
+                label="Data de admissão"
+                type="date"
+                {...field}
+                error={errors.admissionDate?.message}
+              />
+            )}
+          />
 
-                    if (value.length <= 14 && /^[0-9.-]*$/.test(value)) {
-                      setFieldValue('cpf', sanitize(value));
-                    }
-                  }}
-                  value={masks.cpf(values.cpf)}
-                  error={errors.cpf as string}
-                />
-                <TextField
-                  id="date"
-                  label="Data de admissão"
-                  type="date"
-                  name="admissionDate"
-                  onChange={(e) => {
-                    const { value } = e.target;
-                    setFieldValue('admissionDate', value);
-                  }}
-                  error={errors.admissionDate as string}
-                />
-                <Button>Cadastrar</Button>
-              </S.CustomForm>
-            );
-          }}
-        </Formik>
+          <TextField type="hidden" {...register('status')} />
+          <Button>Cadastrar</Button>
+        </S.CustomForm>
       </S.Card>
     </S.Container>
   );

@@ -94,13 +94,12 @@ describe('NewUser', () => {
   it('should show "Data de admissão é obrigatório" if date is not filled', async () => {
     renderComponent();
 
-    const user = userEvent.setup();
+    const submitButton = screen.getByText('Cadastrar');
+    fireEvent.click(submitButton);
 
-    const cpfField = screen.getByLabelText('CPF');
-    await waitFor(() => user.type(cpfField, '1234'));
-
-    const errorMessage = screen.getByText('Data de admissão é obrigatório');
-
-    expect(errorMessage).toBeInTheDocument();
+    await waitFor(() => {
+      const errorMessage = screen.getByText('Data de admissão é obrigatório');
+      expect(errorMessage).toBeInTheDocument();
+    })
   });
 });

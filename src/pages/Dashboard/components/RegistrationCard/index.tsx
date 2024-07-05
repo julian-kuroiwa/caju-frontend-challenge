@@ -34,14 +34,14 @@ const RegistrationCard = ({
 
       handleChangeStatusAction();
     },
-    [data],
+    [data, handleChangeStatusAction, setCurrentRegistration, setRegistrationNewStatus],
   );
 
   const handleDeleteAction = useCallback(() => {
     setCurrentRegistration(data);
 
     handleRemoveAction();
-  }, [data]);
+  }, [data, handleRemoveAction, setCurrentRegistration]);
 
   return (
     <S.Card data-testid={`registration-card-${data.status}`}>

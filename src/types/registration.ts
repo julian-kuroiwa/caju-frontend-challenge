@@ -16,5 +16,7 @@ export interface Registration {
   email: string;
   employeeName: string;
   id: string;
-  status: keyof typeof StatusType;
+  status: string;
 }
+
+export type NewRegistration = Omit<Registration, 'id'>;

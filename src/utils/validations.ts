@@ -1,7 +1,10 @@
+import { sanitize } from "./sanitize";
+
 export const validations = {
-  cpf: (cpf: string) => {
-  if (cpf == "00000000000") return false;
-  if (cpf.length != 11) return false;
+  cpf: (value: string) => {
+    const cpf = sanitize(value)
+    if (cpf == "00000000000") return false;
+    if (cpf.length != 11) return false;
 
   let sum = 0;
   let rest;

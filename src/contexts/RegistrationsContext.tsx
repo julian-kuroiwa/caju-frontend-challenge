@@ -3,7 +3,11 @@ import { toast } from 'react-toastify';
 import request from '~/api';
 import SpinnerLoadingScreen from '~/components/Loading';
 import { initialValues } from '~/constants/registrations';
-import { Registration, StatusType } from '~/types/registration';
+import {
+  NewRegistration,
+  Registration,
+  StatusType,
+} from '~/types/registration';
 
 interface RegistrationContextProps {
   children: ReactNode;
@@ -12,7 +16,7 @@ interface RegistrationContextProps {
 interface RegistrationContextType {
   registrations: Registration[];
   getRegistrations: (props: string) => void;
-  addNewRegistration: (props: Registration) => void;
+  addNewRegistration: (props: NewRegistration) => void;
   handleStatus: () => void;
   handleRemove: () => void;
   loading: boolean;
@@ -42,7 +46,7 @@ const RegistrationProvider = ({ children }: RegistrationContextProps) => {
     }, 300);
   };
 
-  const addNewRegistration = async (newRegistration: Registration) => {
+  const addNewRegistration = async (newRegistration: NewRegistration) => {
     setLoading(true);
 
     try {

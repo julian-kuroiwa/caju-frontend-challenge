@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { StatusType } from '~/types/registration';
 import { validations } from "~/utils/validations";
 
   const fullNameRegex =
@@ -17,4 +18,6 @@ import { validations } from "~/utils/validations";
       )
       .required('CPF é obrigatório'),
     admissionDate: Yup.string().required('Data de admissão é obrigatório'),
+    status: Yup.mixed<string>().oneOf(Object.values(StatusType)).required()
   });
+

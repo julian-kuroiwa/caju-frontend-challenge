@@ -7,7 +7,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'eslint-config-prettier',
     "plugin:react-hooks/recommended",
-    'plugin:prettier/recommended'
+    'prettier'
   ],
   settings: {
     react: {
@@ -28,6 +28,8 @@ module.exports = {
     "react/display-name": "off",
     "@typescript-eslint/ban-types": "off",
     "import/named": "off",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "import/no-unresolved": "off",
+    "@typescript-eslint/no-unused-vars": "warn"
   },
 };
