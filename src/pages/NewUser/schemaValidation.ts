@@ -12,7 +12,7 @@ import { validations } from "~/utils/validations";
       .email('E-mail é inválido')
       .required('E-mail é obrigatorio'),
     cpf: Yup.string()
-      .test('cpf', 'Cpf é inválido', (value: string | undefined) =>
+      .test('cpf', 'CPF é inválido', (value: string | undefined) =>
         validations.cpf(value || ''),
       )
       .required('CPF é obrigatório'),

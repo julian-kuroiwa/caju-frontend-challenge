@@ -21,7 +21,6 @@ const NewUserPage = () => {
   };
 
   const onSubmit = async (values: Registration) => {
-    console.log(values);
     await addNewRegistration(values);
     goToHome();
   };
@@ -35,13 +34,13 @@ const NewUserPage = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          validateOnChange
           validateOnBlur
           onSubmit={onSubmit}>
           {({ handleSubmit, errors, values, setFieldValue }) => {
             return (
               <S.CustomForm onSubmit={handleSubmit} noValidate>
                 <TextField
+                  id="name"
                   placeholder="Nome"
                   label="Nome"
                   name="employeeName"
@@ -53,6 +52,7 @@ const NewUserPage = () => {
                   error={errors.employeeName as string}
                 />
                 <TextField
+                  id="email"
                   placeholder="Email"
                   label="Email"
                   type="email"
@@ -65,6 +65,7 @@ const NewUserPage = () => {
                   error={errors.email as string}
                 />
                 <TextField
+                  id="cpf"
                   placeholder="CPF"
                   label="CPF"
                   name="cpf"
@@ -79,6 +80,7 @@ const NewUserPage = () => {
                   error={errors.cpf as string}
                 />
                 <TextField
+                  id="date"
                   label="Data de admissão"
                   type="date"
                   name="admissionDate"

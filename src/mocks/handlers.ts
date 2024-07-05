@@ -22,9 +22,17 @@ export const handlers = [
       ctx.json(registrationStatusChanged),
     )
   }),
-  rest.delete('http://localhost:3000/registrations/:id', async (_, res, ctx) => {
+  rest.delete('http://localhost:3000/registrations/:id', (_, res, ctx) => {
     return res(
       ctx.status(201),
     )
   }),
+  rest.post('http://localhost:3000/registrations', async (req, res, ctx) => {
+    const body = await req.json()
+
+  return res(
+    ctx.status(201),
+    ctx.json(body)
+  )
+}),
 ]
